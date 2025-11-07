@@ -23,7 +23,7 @@ function App() {
     setResults(null)
 
     try {
-      const response = await axios.get<DomainResult>('/api/domains', {
+      const response = await axios.get<DomainResult>("https://domain-finder-backend-lgpk.onrender.com/api/domains", {
         params: { keyword, tld }
       })
       setResults(response.data)
@@ -54,12 +54,12 @@ function App() {
                   Domain Finder
                 </h1>
               </div>
-               <p className="text-white/90 text-sm md:text-base font-light max-w-2xl mx-auto drop-shadow-lg mt-2">
-                 Generate professional, brandable domain names instantly
-               </p>
-               <p className="text-white/70 text-xs md:text-sm font-light max-w-xl mx-auto mt-1 drop-shadow">
-                 Brand Name Generator + Domain Finder
-               </p>
+              <p className="text-white/90 text-sm md:text-base font-light max-w-2xl mx-auto drop-shadow-lg mt-2">
+                Generate professional, brandable domain names instantly
+              </p>
+              <p className="text-white/70 text-xs md:text-sm font-light max-w-xl mx-auto mt-1 drop-shadow">
+                Brand Name Generator + Domain Finder
+              </p>
               <div className="mt-4 flex justify-center gap-2">
                 <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                 <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
