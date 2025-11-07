@@ -37,7 +37,7 @@ export default function DomainSearch({ onSearch, disabled }: DomainSearchProps) 
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
               placeholder="e.g., home warranty, car warranty"
-              className="w-full px-3 py-2 text-sm bg-white/20 backdrop-blur-md border-2 border-white/30 rounded-lg text-gray-800 placeholder-white/60 focus:ring-2 focus:ring-white/50 focus:border-white/50 outline-none transition-all duration-300 shadow-lg hover:border-white/40"
+              className="w-full px-3 py-2 text-sm bg-white/20 backdrop-blur-md border-2 border-white/30 rounded-lg text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-white/50 focus:border-white/50 outline-none transition-all duration-300 shadow-lg hover:border-white/40"
               disabled={disabled}
             />
           </div>
@@ -50,7 +50,7 @@ export default function DomainSearch({ onSearch, disabled }: DomainSearchProps) 
               id="tld"
               value={tld}
               onChange={(e) => setTld(e.target.value)}
-              className="w-full px-3 py-2 text-sm bg-white/20 backdrop-blur-md border-2 border-white/30 rounded-lg text-gray-800 focus:ring-2 focus:ring-white/50 focus:border-white/50 outline-none transition-all duration-300 shadow-lg hover:border-white/40"
+              className="w-full px-4 py-2 text-sm bg-white/20 backdrop-blur-md border-2 border-white/30 rounded-lg text-gray-800 focus:ring-2 focus:ring-white/50 focus:border-white/50 outline-none transition-all duration-300 shadow-lg hover:border-white/40"
               disabled={disabled}
             >
               {TLD_OPTIONS.map((option) => (
