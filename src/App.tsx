@@ -52,7 +52,7 @@ function App() {
             {/* Header */}
             <div className="text-center mb-6">
               <div className="flex items-center justify-center">
-                <img src="https://image.s10.sfmc-content.com/lib/fe2b1171706405797d1375/m/1/2fb6e6f2-244e-41a0-b20a-9049947429c9.png" alt="Logo" className="w-12 mr-2" />
+                <img src="/logo.png" alt="Logo" className="w-12 mr-2" />
                 <h1 className="text-3xl md:text-2xl lg:text-3xl font-extrabold text-white tracking-tight drop-shadow-2xl">
                   Domain Finder
                 </h1>
