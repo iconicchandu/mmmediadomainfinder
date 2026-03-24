@@ -19,17 +19,35 @@ function App() {
   const [error, setError] = useState<string | null>(null)
   const [requestedCount, setRequestedCount] = useState<number>(0)
 
-  const handleSearch = async (keyword: string, tld: string, count: number) => {
+  const handleSearch = async (keyword: string, selections: Array<{tld: string, count: number}>) => {
     setLoading(true)
     setError(null)
     setResults(null)
-    setRequestedCount(count)
+    
+    // Calculate total requested count
+    const totalCount = selections.reduce((sum, sel) => sum + sel.count, 0)
+    setRequestedCount(totalCount)
 
     try {
-      const response = await axios.get<DomainResult>("https://mmmediadomainfinder.onrender.com/api/domains", {
-        params: { keyword, tld, count }
-      })
-      setResults(response.data)
+      const responses = await Promise.all(
+        selections.map(sel => 
+          axios.get<DomainResult>("https://mmmediadomainfinder.onrender.com/api/domains", {
+            params: { keyword, tld: sel.tld, count: sel.count }
+          })
+        )
+      )
+      
+      const mergedResults: DomainResult = {
+        keyword,
+        tld: selections.length === 1 ? selections[0].tld : selections.map(s => s.tld).join(', '),
+        totalGenerated: responses.reduce((acc, res) => acc + res.data.totalGenerated, 0),
+        available: responses.reduce((acc, res) => acc + res.data.available, 0),
+        domains: responses.flatMap(res => res.data.domains.map((d: any) => 
+          typeof d === 'string' ? { domain: d, available: true } : d
+        ))
+      }
+      
+      setResults(mergedResults)
     } catch (err: any) {
       const errorMessage = err.response?.data?.message ||
         err.response?.data?.error ||
